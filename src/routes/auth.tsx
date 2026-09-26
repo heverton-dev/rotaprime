@@ -14,7 +14,10 @@ export const Route = createFileRoute("/auth")({
       { title: "Entrar — RotaPrime" },
       { name: "description", content: "Acesso ao painel de gestão e à aplicação do estafeta." },
       { property: "og:title", content: "Entrar — RotaPrime" },
-      { property: "og:description", content: "Acesso ao painel de gestão e à aplicação do estafeta." },
+      {
+        property: "og:description",
+        content: "Acesso ao painel de gestão e à aplicação do estafeta.",
+      },
       { name: "robots", content: "noindex" },
     ],
   }),
@@ -29,7 +32,6 @@ function AuthPage() {
   const [busy, setBusy] = useState(false);
   const [pronto, setPronto] = useState(false);
   useEffect(() => setPronto(true), []);
-
 
   useEffect(() => {
     if (session && roles.length > 0) {
@@ -100,4 +102,3 @@ function AuthPage() {
     </div>
   );
 }
-

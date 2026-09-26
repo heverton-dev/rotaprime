@@ -36,7 +36,10 @@ function enfileirar(item: Pendente) {
 
 async function enviar(item: Pendente) {
   if (item.kind === "stop") {
-    const { error } = await supabase.from("stops").update(item.campos as never).eq("id", item.id);
+    const { error } = await supabase
+      .from("stops")
+      .update(item.campos as never)
+      .eq("id", item.id);
     if (error) throw error;
   } else {
     const { error } = await supabase.from("time_entries").insert(item.payload as never);

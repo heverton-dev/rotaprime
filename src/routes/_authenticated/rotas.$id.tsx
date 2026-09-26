@@ -103,7 +103,10 @@ function DetalheRota() {
 
   const atualizarRota = useMutation({
     mutationFn: async (campos: Record<string, unknown>) => {
-      const { error } = await supabase.from("delivery_routes").update(campos as never).eq("id", id);
+      const { error } = await supabase
+        .from("delivery_routes")
+        .update(campos as never)
+        .eq("id", id);
       if (error) throw error;
     },
     onSuccess: () => {
@@ -116,7 +119,8 @@ function DetalheRota() {
   const otimizar = useMutation({
     mutationFn: async () => {
       const lista = (paradas.data ?? []).filter((s) => s.lat != null && s.lng != null);
-      if (lista.length < 3) throw new Error("A rota precisa de pelo menos três paradas localizadas.");
+      if (lista.length < 3)
+        throw new Error("A rota precisa de pelo menos três paradas localizadas.");
       const restantes = [...lista];
       const ordenadas = [restantes.shift()!];
       while (restantes.length) {
@@ -194,9 +198,7 @@ function DetalheRota() {
         <Card className="lg:col-span-2">
           <CardHeader className="flex-row items-center justify-between">
             <CardTitle className="text-base">Percurso</CardTitle>
-            {estadoRota ? (
-              <StatusBadge label={estadoRota.label} tone={estadoRota.tone} />
-            ) : null}
+            {estadoRota ? <StatusBadge label={estadoRota.label} tone={estadoRota.tone} /> : null}
           </CardHeader>
           <CardContent>
             {pontos.length ? (
@@ -288,7 +290,10 @@ function DetalheRota() {
             const permanencia = minutosEntre(s.iniciada_em, s.concluida_em);
             const excedeu = permanencia != null && permanencia > SLA_PARADA_MIN;
             return (
-              <div key={s.id} className="flex flex-wrap items-start justify-between gap-3 px-4 py-4">
+              <div
+                key={s.id}
+                className="flex flex-wrap items-start justify-between gap-3 px-4 py-4"
+              >
                 <div className="min-w-0">
                   <p className="text-sm font-semibold">
                     #{s.ordem} {s.cliente}{" "}
@@ -300,9 +305,7 @@ function DetalheRota() {
                     {s.morada} {s.codigo_postal ? `· ${s.codigo_postal}` : ""}
                   </p>
                   {s.motivo_insucesso ? (
-                    <p className="mt-1 text-xs text-destructive">
-                      Insucesso: {s.motivo_insucesso}
-                    </p>
+                    <p className="mt-1 text-xs text-destructive">Insucesso: {s.motivo_insucesso}</p>
                   ) : null}
                   {s.assinatura_nome ? (
                     <p className="mt-1 text-xs text-muted-foreground">

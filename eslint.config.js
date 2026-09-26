@@ -34,6 +34,8 @@ export default tseslint.config(
       ],
       "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
       "@typescript-eslint/no-unused-vars": "off",
+      // Timer lido num closure antes da atribuicao (previewAuthStorage.ts, gerido pelo Lovable).
+      "prefer-const": ["error", { ignoreReadBeforeAssign: true }],
     },
   },
   eslintPluginPrettier,

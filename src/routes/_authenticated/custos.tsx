@@ -139,12 +139,7 @@ function Custos() {
             </div>
             <div className="space-y-1.5">
               <Label htmlFor="data">Data</Label>
-              <Input
-                id="data"
-                type="date"
-                value={data}
-                onChange={(e) => setData(e.target.value)}
-              />
+              <Input id="data" type="date" value={data} onChange={(e) => setData(e.target.value)} />
             </div>
             <div className="space-y-1.5">
               <Label htmlFor="desc">Descrição</Label>
