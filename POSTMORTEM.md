@@ -49,3 +49,9 @@ Cada problema corrigido tem uma prevenção verificável e um teste de regressã
 - **Causa:** o gate tratava qualquer JSON com `$schema` como JSON Schema; `components.json` do shadcn aponta para `ui.shadcn.com/schema.json` e bloqueava o commit.
 - **Fix:** cópia local em `gates/G_CONTRACTS.py` só valida ficheiros cujo `$schema` é do `json-schema.org`. **Pendente: aplicar a mesma correção no template do ecossistema-aidd**, senão `forge init --force` reintroduz o falso positivo.
 - **Prevenção:** verificado à mão que um schema `draft-07` continua a falhar (exit 1).
+
+## PM-08 — Falso positivo do `G_BLOQUEAR_SEGREDOS` (forge) depois do build
+
+- **Causa:** sem ficheiros *staged* (CI ou execução manual), o gate varre a árvore inteira, incluindo `.output/` (build do nitro, no `.gitignore`), e acusa código das libs do Supabase.
+- **Fix:** cópia local exclui `.output`, `.nitro`, `.tanstack`, `.vinxi`, `.wrangler`. **Pendente: levar para o template do ecossistema-aidd** (idealmente respeitar o `.gitignore`).
+- **Prevenção:** verificado num clone limpo com `.output/` presente: exit 0; com `password = "…"` em `src/`: exit 1.

@@ -21,6 +21,8 @@ from pathlib import Path
 EXCLUDED_DIRS = {
     ".git", "__pycache__", "node_modules", ".venv", "venv",
     "dist", "build", ".mypy_cache", ".pytest_cache", "gates",
+    # saida de build do TanStack Start/nitro (gitignored): libs de terceiros, nao codigo do projeto
+    ".output", ".nitro", ".tanstack", ".vinxi", ".wrangler",
 }
 
 BINARY_EXTENSIONS = {
