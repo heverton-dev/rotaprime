@@ -211,7 +211,11 @@ function Parada() {
             </Button>
           </div>
           {p?.estado === "pendente" ? (
-            <Button className="w-full touch-target" disabled={aGuardar} onClick={() => void iniciar()}>
+            <Button
+              className="w-full touch-target"
+              disabled={aGuardar}
+              onClick={() => void iniciar()}
+            >
               Iniciar parada
             </Button>
           ) : (

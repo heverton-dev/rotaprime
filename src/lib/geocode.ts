@@ -3,9 +3,7 @@
  * Devolve null quando a morada não é reconhecida — a parada fica sem coordenadas
  * e o geofencing é ignorado para ela.
  */
-export async function geocodificar(
-  consulta: string,
-): Promise<{ lat: number; lng: number } | null> {
+export async function geocodificar(consulta: string): Promise<{ lat: number; lng: number } | null> {
   try {
     const url =
       "https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=pt&q=" +

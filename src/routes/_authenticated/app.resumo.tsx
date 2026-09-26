@@ -49,7 +49,10 @@ function Resumo() {
       const { data, error } = await supabase
         .from("stops")
         .select("id, route_id, estado")
-        .in("route_id", (rotas.data ?? []).map((r) => r.id));
+        .in(
+          "route_id",
+          (rotas.data ?? []).map((r) => r.id),
+        );
       if (error) throw error;
       return data;
     },
@@ -59,7 +62,9 @@ function Resumo() {
   const porRota = (rotas.data ?? []).map((r) => {
     const dela = lista.filter((s) => s.route_id === r.id);
     const concluidas = dela.filter((s) => s.estado === "concluida").length;
-    const insucessos = dela.filter((s) => s.estado === "insucesso" || s.estado === "reversa").length;
+    const insucessos = dela.filter(
+      (s) => s.estado === "insucesso" || s.estado === "reversa",
+    ).length;
     return {
       ...r,
       concluidas,

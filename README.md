@@ -27,3 +27,20 @@ npm run dev
 - TypeScript
 - React
 - Tailwind CSS
+
+## Qualidade e blindagem AIDD
+
+O projeto continua a ser editado no Lovable; esta secção descreve o que corre fora dele.
+
+| Comando | O que faz |
+| --- | --- |
+| `npm run typecheck` | `tsc --noEmit` |
+| `npm run lint` | ESLint + Prettier |
+| `npm test` | Vitest (`src/**/*.test.ts`, `tests/**/*.test.ts`) |
+| `npm run verificar` | typecheck + lint + testes + build |
+
+- **Variáveis de ambiente:** copie `.env.example` para `.env` e preencha. `.env` nunca vai para o git. `SUPABASE_SERVICE_ROLE_KEY` é só de servidor (ficheiros `*.server.ts`), nunca `VITE_*`.
+- **Pre-commit:** `python <ecossistema-aidd>/ecossistema.py forge init .` instala `.git/hooks/pre-commit`, que corre todos os `gates/G_*.py` (incluindo `G_SUITE_NPM`, que chama `npm run verificar`). Commit vermelho é bloqueado; não usar `--no-verify`.
+- **CI:** `.github/workflows/ci.yml` corre os mesmos gates em push/PR.
+- **Segurança:** `gates/G_SEGURANCA_ROTAPRIME.py` (regras R1–R6) e revisão de RLS em `docs/seguranca/RLS-REVISAO.md`. Problemas corrigidos e respetivos testes em `POSTMORTEM.md`.
+- **Stack:** TanStack Start (não Next.js) por decisão registada em `.stack_override.json` — é o template do Lovable.

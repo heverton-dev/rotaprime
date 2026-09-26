@@ -126,9 +126,7 @@ export function AdminShell({
                 </Button>
                 <h1 className="truncate text-xl md:text-2xl">{titulo}</h1>
               </div>
-              {descricao ? (
-                <p className="mt-1 text-sm text-muted-foreground">{descricao}</p>
-              ) : null}
+              {descricao ? <p className="mt-1 text-sm text-muted-foreground">{descricao}</p> : null}
             </div>
             {acoes ? <div className="flex shrink-0 gap-2">{acoes}</div> : null}
           </div>

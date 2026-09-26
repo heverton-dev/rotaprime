@@ -1,0 +1,5 @@
+{
+  "override_frontend": true,
+  "override_backend": false,
+  "justificativa": "App gerido pelo Lovable (template tanstack_start_ts_current): TanStack Start + Vite + React + TS + Tailwind + Supabase. Migrar para Next.js quebra a sincronizacao com o editor Lovable, que continua em uso. Decisao registada pelo dono do projeto em 2026-09-26 (branch aidd/blindagem)."
+}

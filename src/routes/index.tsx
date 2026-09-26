@@ -24,12 +24,28 @@ export const Route = createFileRoute("/")({
 });
 
 const modulos = [
-  { icon: Truck, titulo: "Frota e carrinhas", texto: "Atribuição de veículos e pedidos de manutenção." },
+  {
+    icon: Truck,
+    titulo: "Frota e carrinhas",
+    texto: "Atribuição de veículos e pedidos de manutenção.",
+  },
   { icon: MapPin, titulo: "Roteirização", texto: "Rota do dia ordenada e acompanhamento no mapa." },
-  { icon: ClipboardCheck, titulo: "Prova de entrega", texto: "Checklist, assinatura, fotografia e insucessos." },
+  {
+    icon: ClipboardCheck,
+    titulo: "Prova de entrega",
+    texto: "Checklist, assinatura, fotografia e insucessos.",
+  },
   { icon: Timer, titulo: "Ponto e SLA", texto: "Entrada, pausa, saída e alertas de permanência." },
-  { icon: Euro, titulo: "Custos e proventos", texto: "Pagamento por parada, combustível e portagens." },
-  { icon: ShieldCheck, titulo: "Permissões", texto: "Níveis de acesso por empresa, colaborador e estafeta." },
+  {
+    icon: Euro,
+    titulo: "Custos e proventos",
+    texto: "Pagamento por parada, combustível e portagens.",
+  },
+  {
+    icon: ShieldCheck,
+    titulo: "Permissões",
+    texto: "Níveis de acesso por empresa, colaborador e estafeta.",
+  },
 ];
 
 function Landing() {

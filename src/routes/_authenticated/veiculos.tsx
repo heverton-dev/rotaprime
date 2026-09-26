@@ -106,7 +106,10 @@ function Veiculos() {
 
   const atualizar = useMutation({
     mutationFn: async (v: { id: string; campos: Record<string, unknown> }) => {
-      const { error } = await supabase.from("vehicles").update(v.campos as never).eq("id", v.id);
+      const { error } = await supabase
+        .from("vehicles")
+        .update(v.campos as never)
+        .eq("id", v.id);
       if (error) throw error;
     },
     onSuccess: () => void qc.invalidateQueries({ queryKey: ["veiculos-lista"] }),

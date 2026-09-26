@@ -114,7 +114,9 @@ function Rotas() {
 
       let ordem = 1;
       for (const linha of linhas) {
-        const [cliente = "", morada = "", codigo_postal = ""] = linha.split("|").map((p) => p.trim());
+        const [cliente = "", morada = "", codigo_postal = ""] = linha
+          .split("|")
+          .map((p) => p.trim());
         const coords = morada ? await geocodificar(`${morada} ${codigo_postal} Portugal`) : null;
         const { error: err2 } = await supabase.from("stops").insert({
           route_id: rota.id,

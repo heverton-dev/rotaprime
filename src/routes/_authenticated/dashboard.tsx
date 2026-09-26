@@ -8,13 +8,7 @@ import { AdminShell } from "@/components/AdminShell";
 import { FleetMap, type MapPonto } from "@/components/FleetMap";
 import { StatusBadge } from "@/components/StatusBadge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import {
-  euro,
-  minutosEntre,
-  ROUTE_ESTADOS,
-  SLA_PARADA_MIN,
-  STOP_ESTADOS,
-} from "@/lib/domain";
+import { euro, minutosEntre, ROUTE_ESTADOS, SLA_PARADA_MIN, STOP_ESTADOS } from "@/lib/domain";
 
 export const Route = createFileRoute("/_authenticated/dashboard")({
   head: () => ({
@@ -108,7 +102,8 @@ function Dashboard() {
   const insucessos = lista.filter((s) => s.estado === "insucesso" || s.estado === "reversa").length;
   const emAtraso = lista.filter(
     (s) =>
-      s.estado === "em_curso" && (minutosEntre(s.iniciada_em, s.concluida_em) ?? 0) > SLA_PARADA_MIN,
+      s.estado === "em_curso" &&
+      (minutosEntre(s.iniciada_em, s.concluida_em) ?? 0) > SLA_PARADA_MIN,
   );
   const totalCustos = (custos.data ?? []).reduce((t, c) => t + Number(c.valor), 0);
   const proventos = (rotas.data ?? []).reduce((t, r) => {
@@ -248,7 +243,10 @@ function Dashboard() {
       </Card>
 
       <p className="mt-4 text-xs text-muted-foreground">
-        Estados das paradas: {Object.values(STOP_ESTADOS).map((s) => s.label).join(" · ")}
+        Estados das paradas:{" "}
+        {Object.values(STOP_ESTADOS)
+          .map((s) => s.label)
+          .join(" · ")}
       </p>
     </AdminShell>
   );
